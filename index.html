@@ -17,6 +17,7 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
+  html,body{overflow-x:hidden;max-width:100%}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,-apple-system,sans-serif;font-weight:400;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
   h1,h2,h3{font-weight:500;letter-spacing:-.025em;line-height:1.05;margin:0}
   p{margin:0}
@@ -61,7 +62,7 @@
   .hero{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;overflow:hidden}
   .hero canvas{position:absolute;inset:0;width:100%;height:100%}
   .hero .wrap{position:relative;width:100%;padding-top:80px;padding-bottom:80px}
-  .hero h1{font-size:clamp(44px,8vw,112px);font-weight:300;max-width:12ch}
+  .hero h1{font-size:clamp(34px,9vw,112px);font-weight:300;max-width:12ch;overflow-wrap:break-word;hyphens:none}
   .hero h1 strong{font-weight:500}
   .hero .sub{max-width:44ch}
   .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
@@ -133,7 +134,7 @@
   /* contact */
   .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
   .cinfo p{margin-bottom:16px}
-  .cinfo a{border-bottom:1px solid var(--line);transition:border-color .2s}
+  .cinfo a{border-bottom:1px solid var(--line);transition:border-color .2s;overflow-wrap:anywhere}
   .cinfo a:hover{border-color:var(--ink)}
   form{display:grid;gap:22px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -147,6 +148,51 @@
   footer{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--grey)}
   footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer nav{display:flex;gap:22px}
+
+
+  /* ---- phones ---- */
+  @media (max-width:640px){
+    body{font-size:16px}
+    section{padding:64px 0}
+    h2{font-size:clamp(28px,7.5vw,40px);max-width:100%}
+    .sub{font-size:17px;margin-top:16px}
+    .nav .wrap{height:60px}
+    .mark{font-size:17px;gap:8px}
+    .mark .nb{width:26px;height:26px}
+    .links{top:60px}
+    .hero{min-height:auto;padding:56px 0 40px}
+    .hero .wrap{padding-top:0;padding-bottom:0}
+    .hero h1{max-width:100%}
+    .hero .sub{max-width:100%}
+    .cta{margin-top:28px;gap:10px}
+    .cta .btn{flex:1 1 100%;justify-content:center}
+    .hero-foot{display:none}
+    .fact{padding:24px 0}
+    .fact strong{font-size:20px}
+    .svc{margin-top:36px;gap:24px}
+    .svc-item button{padding:20px 0}
+    .svc-item h3{font-size:24px}
+    .svc-item.open h3{transform:none}
+    .svc-item.open .svc-body{max-height:420px}
+    .svc-visual{aspect-ratio:3/2;border-radius:4px}
+    .steps{margin-top:36px}
+    .step{padding:24px 0 4px}
+    .step h3{font-size:20px}
+    .work-grid{margin-top:36px;gap:12px}
+    .tile{aspect-ratio:4/3}
+    .tile img{filter:none}
+    .tile figcaption{padding:16px}
+    .plist div{padding:20px 0}
+    .cgrid{gap:36px}
+    form{gap:18px}
+    footer{padding:28px 0}
+    footer .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+    footer nav{flex-wrap:wrap;gap:16px}
+  }
+  @media (max-width:400px){
+    .hero h1{font-size:32px}
+    .btn{height:46px;padding:0 18px}
+  }
 
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -289,7 +335,6 @@
       <p class="sub" style="margin-bottom:36px">Tell us what slows your business down. We'll tell you whether software fixes it, and what it would cost.</p>
       <p>New project — <a href="mailto:sales@novabyte.mu">sales@novabyte.mu</a></p>
       <p>Existing client — <a href="mailto:support@novabyte.mu">support@novabyte.mu</a></p>
-      <p><a href="https://wa.me/230XXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></p>
     </div>
     <form action="https://formsubmit.co/sales@novabyte.mu" method="POST">
       <input type="hidden" name="_subject" value="New enquiry from novabyte.mu">
@@ -346,6 +391,7 @@
   // Dot field: a calm grid of points that breathes and lifts toward the cursor
   const c = document.getElementById('field'); const ctx = c.getContext('2d');
   if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  if (innerWidth < 640) { c.style.display='none'; return; }
   let w, h, pts = [], mouse = {x:-1e4,y:-1e4}, t = 0, dpr = Math.min(devicePixelRatio||1, 2);
   const build = () => {
     w = c.clientWidth; h = c.clientHeight; c.width = w*dpr; c.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);

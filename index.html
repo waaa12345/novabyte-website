@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novabyte Solutions — Software, websites and ERP, Mauritius</title>
+<meta name="description" content="Novabyte Solutions designs and builds custom software, websites and ERP systems for businesses in Mauritius. Fixed quotes. Support after launch.">
+<link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --ink:#0B0C0E; --grey:#6E7380; --line:#E6E8EC; --soft:#F5F6F8;
+    --accent:#0047FF;
+    --max:1240px; --gutter:clamp(20px,4vw,56px);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,-apple-system,sans-serif;font-weight:400;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-weight:500;letter-spacing:-.025em;line-height:1.05;margin:0}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+  .grey{color:var(--grey)}
+  section{padding:120px 0}
+  @media (max-width:800px){section{padding:80px 0}}
+  h2{font-size:clamp(32px,4.4vw,56px);max-width:18ch}
+  .sub{font-size:19px;color:var(--grey);max-width:52ch;margin-top:22px;font-weight:300}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font-weight:500;font-size:15px;border:1px solid var(--ink);background:var(--ink);color:#fff;transition:background .2s,color .2s,border-color .2s,transform .2s}
+  .btn:hover{background:#fff;color:var(--ink)}
+  .btn.line{background:transparent;color:var(--ink)}
+  .btn.line:hover{background:var(--ink);color:#fff}
+  .btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .mark{font-weight:600;letter-spacing:-.02em;font-size:19px;display:flex;align-items:center;gap:10px}
+  .mark .nb{width:30px;height:30px;color:var(--ink)}
+  .links{display:flex;gap:32px;font-size:15px;color:var(--grey)}
+  .links a{transition:color .2s}
+  .links a:hover{color:var(--ink)}
+  .nav .right{display:flex;align-items:center;gap:22px}
+  .status{font-size:13px;color:var(--grey);display:flex;align-items:center;gap:8px}
+  .status i{width:7px;height:7px;border-radius:50%;background:#15B36A;display:inline-block;box-shadow:0 0 0 0 rgba(21,179,106,.5);animation:pulse 2.4s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(21,179,106,0)}100%{box-shadow:0 0 0 0 rgba(21,179,106,0)}}
+  .progress{position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--ink);transition:width .1s linear}
+  .burger{display:none;background:none;border:0;font:inherit;font-size:15px;cursor:pointer;color:var(--ink)}
+  @media (max-width:900px){
+    .links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:6px var(--gutter) 14px}
+    .links a{padding:14px 0;border-top:1px solid var(--line);color:var(--ink);font-size:17px}
+    .links.open{display:flex}
+    .burger{display:block}
+    .status,.nav .btn{display:none}
+  }
+
+  /* hero */
+  .hero{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;overflow:hidden}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%}
+  .hero .wrap{position:relative;width:100%;padding-top:80px;padding-bottom:80px}
+  .hero h1{font-size:clamp(44px,8vw,112px);font-weight:300;max-width:12ch}
+  .hero h1 strong{font-weight:500}
+  .hero .sub{max-width:44ch}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
+  .hero-foot{position:absolute;left:0;right:0;bottom:28px}
+  .hero-foot .wrap{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--grey);padding-top:0;padding-bottom:0}
+  .scroll-hint{display:flex;align-items:center;gap:10px}
+  .scroll-hint span{display:inline-block;width:1px;height:28px;background:var(--line);position:relative;overflow:hidden}
+  .scroll-hint span::after{content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;background:var(--ink);animation:drop 2s infinite}
+  @keyframes drop{to{top:100%}}
+
+  /* facts */
+  .facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .facts .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+  .fact{padding:36px 0;font-size:15px;color:var(--grey)}
+  .fact strong{display:block;color:var(--ink);font-size:24px;font-weight:500;margin-bottom:4px;letter-spacing:-.02em}
+  .fact + .fact{border-left:1px solid var(--line);padding-left:36px}
+  @media (max-width:800px){.facts .wrap{grid-template-columns:1fr}.fact + .fact{border-left:0;padding-left:0;border-top:1px solid var(--line)}}
+
+  /* services: expanding list with image reveal */
+  .svc{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;margin-top:64px;align-items:start}
+  .svc-list{border-top:1px solid var(--line)}
+  .svc-item{border-bottom:1px solid var(--line);cursor:pointer}
+  .svc-item button{all:unset;display:flex;justify-content:space-between;align-items:center;width:100%;padding:28px 0;cursor:pointer}
+  .svc-item h3{font-size:clamp(24px,3vw,36px);font-weight:400;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .svc-item button span{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:20px;font-weight:300;color:var(--grey);transition:transform .35s,border-color .35s,color .35s;flex:none}
+  .svc-item.open button span{transform:rotate(45deg);border-color:var(--ink);color:var(--ink)}
+  .svc-item.open h3{transform:translateX(12px)}
+  .svc-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.8,.2,1)}
+  .svc-item.open .svc-body{max-height:320px}
+  .svc-body p{color:var(--grey);padding-bottom:12px;max-width:48ch}
+  .svc-body ul{margin:0 0 28px;padding:0;list-style:none;color:var(--ink);font-size:15px}
+  .svc-body li{padding:5px 0 5px 18px;position:relative}
+  .svc-body li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:1px;background:var(--ink)}
+  .svc-visual{position:sticky;top:104px;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--soft)}
+  .svc-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:grayscale(1) contrast(1.05);transform:scale(1.04);transition:opacity .6s,transform 1.2s cubic-bezier(.2,.8,.2,1)}
+  .svc-visual img.on{opacity:1;transform:scale(1)}
+  .svc-visual figcaption{position:absolute;left:18px;bottom:16px;font-size:12px;color:#fff;mix-blend-mode:difference}
+  @media (max-width:900px){.svc{grid-template-columns:1fr;gap:28px}.svc-visual{position:static;aspect-ratio:16/10}}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line)}
+  .step{padding:32px 28px 8px 0;position:relative}
+  .step + .step{padding-left:28px;border-left:1px solid var(--line)}
+  .step em{font-style:normal;font-size:13px;color:var(--grey);display:block;margin-bottom:22px}
+  .step h3{font-size:22px;font-weight:500;margin-bottom:10px}
+  .step p{color:var(--grey);font-size:15px}
+  @media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(3){padding-left:0;border-left:0;border-top:1px solid var(--line)}.step:nth-child(4){border-top:1px solid var(--line)}}
+  @media (max-width:560px){.steps{grid-template-columns:1fr}.step + .step{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+
+  /* work */
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:64px}
+  .tile{position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:var(--soft)}
+  .tile img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .8s,transform 1.4s cubic-bezier(.2,.8,.2,1)}
+  .tile:hover img{filter:grayscale(0);transform:scale(1.03)}
+  .tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55))}
+  .tile figcaption small{display:block;font-size:12px;opacity:.8;margin-bottom:4px}
+  .tile figcaption strong{font-weight:500;font-size:18px;letter-spacing:-.01em}
+  @media (max-width:900px){.work-grid{grid-template-columns:1fr}.tile{aspect-ratio:16/10}}
+
+  /* principles */
+  .principles{background:var(--soft)}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .plist{display:grid;gap:0;border-top:1px solid var(--line)}
+  .plist div{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 2fr;gap:24px}
+  .plist strong{font-weight:500}
+  .plist span{color:var(--grey);font-size:15px}
+  @media (max-width:900px){.pgrid{grid-template-columns:1fr;gap:32px}.plist div{grid-template-columns:1fr;gap:6px}}
+
+  /* contact */
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .cinfo p{margin-bottom:16px}
+  .cinfo a{border-bottom:1px solid var(--line);transition:border-color .2s}
+  .cinfo a:hover{border-color:var(--ink)}
+  form{display:grid;gap:22px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .field{display:grid;gap:8px}
+  label{font-size:13px;color:var(--grey)}
+  input,select,textarea{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;padding:10px 0;font:inherit;font-size:16px;color:var(--ink);border-radius:0;transition:border-color .2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
+  textarea{min-height:110px;resize:vertical}
+  @media (max-width:900px){.cgrid{grid-template-columns:1fr;gap:40px}.row{grid-template-columns:1fr}}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--grey)}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer nav{display:flex;gap:22px}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><svg class="nb" viewBox="0 0 100 100" aria-hidden="true"><path d="M22 82V18L56 82V18H64A13.5 13.5 0 0 1 64 45H56M56 45H66A18.5 18.5 0 0 1 66 82H56" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="56" cy="82" r="2.8" fill="#0047FF"/></svg>novabyte</a>
+    <nav class="links" id="links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="right">
+      <div class="status"><i></i><span id="clock">Mauritius</span></div>
+      <a class="btn" href="#contact">Start a project</a>
+      <button class="burger" aria-label="Menu" onclick="document.getElementById('links').classList.toggle('open')">Menu</button>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<section class="hero" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1>Software that <strong>runs</strong> your business.</h1>
+    <p class="sub">Custom systems, websites and ERP for companies in Mauritius. Designed around how your team actually works, delivered at a fixed price, supported after launch.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">Start a project</a>
+      <a class="btn line" href="#services">What we do</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap">
+      <div class="scroll-hint"><span></span>Scroll</div>
+      <div>Mauritius</div>
+    </div>
+  </div>
+</section>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><strong>Fixed quotes</strong>Scope agreed and priced before we build.</div>
+    <div class="fact"><strong>On‑site discovery</strong>We come to you and watch the work happen.</div>
+    <div class="fact"><strong>MRA‑ready</strong>E‑invoicing compliance built into every ERP.</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <h2>Three things we do well.</h2>
+    <div class="svc">
+      <div class="svc-list" id="svc">
+        <div class="svc-item open" data-img="img-web">
+          <button aria-expanded="true"><h3>Websites</h3><span>+</span></button>
+          <div class="svc-body">
+            <p>Fast, mobile‑first sites that bring in enquiries, from a five‑page company site to a full online shop with local payment options.</p>
+            <ul><li>Business websites and landing pages</li><li>E‑commerce</li><li>Hosting, backups and maintenance</li></ul>
+          </div>
+        </div>
+        <div class="svc-item" data-img="img-soft">
+          <button aria-expanded="false"><h3>Custom software</h3><span>+</span></button>
+          <div class="svc-body">
+            <p>Internal tools, dashboards and automations shaped around your workflow, for the day the spreadsheet stops scaling.</p>
+            <ul><li>Operations and job‑tracking tools</li><li>Dashboards and reporting</li><li>Integrations and mobile apps</li></ul>
+          </div>
+        </div>
+        <div class="svc-item" data-img="img-erp">
+          <button aria-expanded="false"><h3>ERP systems</h3><span>+</span></button>
+          <div class="svc-body">
+            <p>Invoicing, stock, HR and accounting in one system, implemented and customised by people you can call.</p>
+            <ul><li>Implementation and data migration</li><li>MRA e‑invoicing compliance</li><li>Training and monthly support</li></ul>
+          </div>
+        </div>
+      </div>
+      <figure class="svc-visual">
+        <img id="img-web" class="on" src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=1200&q=75" alt="Customer at a shop counter">
+        <img id="img-soft" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=75" alt="Dashboard on a screen" loading="lazy">
+        <img id="img-erp" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=75" alt="Engineer on a factory floor" loading="lazy">
+        <figcaption>Built for the floor, the counter and the back office</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>One price. Four steps. No surprises.</h2>
+    <div class="steps">
+      <div class="step"><em>Step 1</em><h3>Discovery</h3><p>We visit, watch how the work is done today and agree what "done" looks like.</p></div>
+      <div class="step"><em>Step 2</em><h3>Proposal</h3><p>A written scope and a fixed quote before a line of code is written.</p></div>
+      <div class="step"><em>Step 3</em><h3>Build</h3><p>Weekly check‑ins with something to click. Changes discussed early, not discovered late.</p></div>
+      <div class="step"><em>Step 4</em><h3>Launch and support</h3><p>Training, handover of every login, and a support plan so nothing is left hanging.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Built for real operations.</h2>
+    <p class="sub">A selection of the kind of systems we build. Client details on request.</p>
+    <div class="work-grid">
+      <figure class="tile">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1000&q=75" alt="Factory floor" loading="lazy">
+        <figcaption><small>Manufacturing</small><strong>Production tracking</strong></figcaption>
+      </figure>
+      <figure class="tile">
+        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=1000&q=75" alt="Retail counter" loading="lazy">
+        <figcaption><small>Retail</small><strong>Point of sale and stock</strong></figcaption>
+      </figure>
+      <figure class="tile">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1000&q=75" alt="Office" loading="lazy">
+        <figcaption><small>Professional services</small><strong>Client portal and website</strong></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="wrap pgrid">
+    <div>
+      <h2>A small team that shows up.</h2>
+      <p class="sub">Leadership, project delivery and two engineers. Every one of us answers the phone, and the people who build your system are the people who support it.</p>
+    </div>
+    <div class="plist">
+      <div><strong>Fixed price</strong><span>Scope first, price second, then we build. Extra requests are quoted separately, never slipped into the bill.</span></div>
+      <div><strong>Local</strong><span>Same time zone, same island. Discovery happens at your premises, not over a form.</span></div>
+      <div><strong>Bilingual</strong><span>Interfaces and documentation in English and French.</span></div>
+      <div><strong>After launch</strong><span>Hosting and maintenance plans, and a support address answered by engineers.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap cgrid">
+    <div class="cinfo">
+      <h2>Let's talk.</h2>
+      <p class="sub" style="margin-bottom:36px">Tell us what slows your business down. We'll tell you whether software fixes it, and what it would cost.</p>
+      <p>New project — <a href="mailto:sales@novabyte.mu">sales@novabyte.mu</a></p>
+      <p>Existing client — <a href="mailto:support@novabyte.mu">support@novabyte.mu</a></p>
+      <p><a href="https://wa.me/230XXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></p>
+    </div>
+    <form action="https://formsubmit.co/sales@novabyte.mu" method="POST">
+      <input type="hidden" name="_subject" value="New enquiry from novabyte.mu">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="row">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="company">Company</label><input id="company" name="company" autocomplete="organization"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="field"><label for="need">What do you need</label>
+        <select id="need" name="need"><option>Website</option><option>Custom software</option><option>ERP system</option><option>Not sure yet</option></select>
+      </div>
+      <div class="field"><label for="message">A few lines about your business</label><textarea id="message" name="message"></textarea></div>
+      <div><button class="btn" type="submit">Send enquiry</button></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:10px"><svg class="nb" style="width:26px;height:26px;color:var(--ink)" viewBox="0 0 100 100" aria-hidden="true"><path d="M22 82V18L56 82V18H64A13.5 13.5 0 0 1 64 45H56M56 45H66A18.5 18.5 0 0 1 66 82H56" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="56" cy="82" r="2.8" fill="#0047FF"/></svg>Novabyte Solutions Ltd · Mauritius · © 2026</div>
+    <nav><a href="#services">Services</a><a href="#process">Process</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Scroll progress line
+  const bar = document.getElementById('progress');
+  const onScroll = () => { const h = document.documentElement; bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%'; };
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Mauritius local time in the nav
+  const clock = document.getElementById('clock');
+  const tick = () => { clock.textContent = 'Mauritius ' + new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Indian/Mauritius'}).format(new Date()); };
+  tick(); setInterval(tick, 30000);
+
+  // Services accordion + image reveal
+  const items = [...document.querySelectorAll('.svc-item')];
+  const imgs = [...document.querySelectorAll('.svc-visual img')];
+  const show = (item) => {
+    items.forEach(i => { const on = i === item; i.classList.toggle('open', on); i.querySelector('button').setAttribute('aria-expanded', on); });
+    imgs.forEach(im => im.classList.toggle('on', im.id === item.dataset.img));
+  };
+  items.forEach(i => { i.querySelector('button').addEventListener('click', () => show(i)); i.addEventListener('mouseenter', () => { if (matchMedia('(hover:hover)').matches) show(i); }); });
+
+  // Mobile menu close
+  document.querySelectorAll('#links a').forEach(a => a.addEventListener('click', () => document.getElementById('links').classList.remove('open')));
+
+  // Dot field: a calm grid of points that breathes and lifts toward the cursor
+  const c = document.getElementById('field'); const ctx = c.getContext('2d');
+  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  let w, h, pts = [], mouse = {x:-1e4,y:-1e4}, t = 0, dpr = Math.min(devicePixelRatio||1, 2);
+  const build = () => {
+    w = c.clientWidth; h = c.clientHeight; c.width = w*dpr; c.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const gap = w < 700 ? 26 : 34; pts = [];
+    for (let y = gap; y < h; y += gap) for (let x = gap; x < w; x += gap) pts.push({x, y});
+  };
+  const draw = () => {
+    t += 0.008; ctx.clearRect(0,0,w,h);
+    for (const p of pts) {
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx,dy);
+      const lift = Math.max(0, 1 - d/220);
+      const wave = Math.sin(p.x*0.012 + t*1.6) * Math.cos(p.y*0.011 + t) * 0.5 + 0.5;
+      const r = 0.6 + wave*1.1 + lift*2.2;
+      const a = 0.10 + wave*0.12 + lift*0.6;
+      ctx.beginPath(); ctx.arc(p.x - dx*lift*0.08, p.y - dy*lift*0.08, r, 0, Math.PI*2);
+      ctx.fillStyle = lift > 0.02 ? `rgba(0,71,255,${a})` : `rgba(11,12,14,${a})`; ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  };
+  addEventListener('resize', build); build(); draw();
+  c.parentElement.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); mouse = {x:e.clientX-r.left, y:e.clientY-r.top}; });
+  c.parentElement.addEventListener('mouseleave', () => mouse = {x:-1e4,y:-1e4});
+})();
+</script>
+</body>
+</html>

@@ -103,8 +103,8 @@
   .slide>p{color:#d4d4d4;text-align:center;font-size:12px}
 
   /* mock UI primitives */
-  .win{width:100%;max-width:780px;background:#fff;color:var(--ink);border-radius:14px;overflow:hidden;text-align:left;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
-  .win>.bar{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#F4F4F5;border-bottom:1px solid var(--line)}
+  .win{--wh:720px;display:flex;flex-direction:column;height:var(--wh);width:100%;max-width:780px;background:#fff;color:var(--ink);border-radius:14px;overflow:hidden;text-align:left;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+  .win>.bar{flex:none;display:flex;align-items:center;gap:6px;padding:10px 12px;background:#F4F4F5;border-bottom:1px solid var(--line)}
   .win>.bar b{width:9px;height:9px;border-radius:50%;background:#D4D4D8}
   .win>.bar span{flex:1;max-width:260px;margin-inline:auto;padding:3px 10px;border-radius:6px;background:#fff;font-size:11px;color:var(--mute);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .mk button{font:inherit;cursor:pointer}
@@ -119,20 +119,20 @@
   .site .brand{font:500 18px/1 var(--serif);letter-spacing:.18em;text-transform:uppercase}
   .site .bag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);font-size:12px;transition:transform .2s,background .2s}
   .site .bag.bump{transform:scale(1.1);background:#F6F1EA}
-  .site .split{display:grid;grid-template-columns:1fr 1fr;background:#F6F1EA}
+  .site .split{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;background:#F6F1EA}
   .site .split div{padding:18px;display:flex;flex-direction:column;justify-content:center;gap:6px}
   .site .split small{font:11px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--gold)}
   .site .split h4{margin:0;font:400 clamp(22px,3.4vw,32px)/1.05 var(--serif)}
   .site .split h4 i{font-style:italic}
   .site .split span{font-size:12px;color:var(--grey)}
-  .site .split img{width:100%;height:100%;min-height:150px;object-fit:cover}
+  .site .split img{width:100%;height:100%;min-height:0;object-fit:cover}
   .site .chips{display:flex;gap:6px;padding:12px 18px 0;overflow-x:auto;scrollbar-width:none}
   .site .chips button{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:11.5px;color:var(--grey)}
   .site .chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
   .site .prods{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px 18px 18px}
   .site .prods>div{position:relative;font-size:12px;transition:opacity .3s}
   .site .prods>div[hidden]{display:none}
-  .site .prods img{aspect-ratio:1;width:100%;object-fit:cover;border-radius:8px;background:#F6F1EA}
+  .site .prods img{aspect-ratio:4/3;width:100%;object-fit:cover;border-radius:8px;background:#F6F1EA}
   .site .prods p{margin-top:6px;font:500 14px/1.2 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .site .prods .pr{white-space:nowrap;display:flex;justify-content:space-between;align-items:center;color:var(--grey);font-size:11.5px}
   .site .prods .add{border:0;background:none;padding:4px 0;font-size:11.5px;text-decoration:underline;text-underline-offset:3px;color:var(--ink)}
@@ -172,7 +172,7 @@
   .phone .home{width:100px;height:4px;border-radius:4px;background:#0A0A0A;margin:4px auto 8px}
 
   /* dashboard mock */
-  .dash{padding:16px;font-size:12px}
+  .dash{flex:1;min-height:0;display:flex;flex-direction:column;padding:16px;font-size:12px}
   .dash header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
   .dash h4{margin:0;font-size:16px;font-weight:500;letter-spacing:-.02em}
   .dash header small{display:block;color:var(--mute)}
@@ -184,12 +184,14 @@
   .kpis strong{font-size:clamp(13px,3.6vw,20px);font-weight:500;letter-spacing:-.03em;white-space:nowrap}
   .kpis em{display:block;font-style:normal;font-size:11px;color:#1AA168}
   .kpis svg{position:absolute;right:8px;bottom:10px;width:46px;height:20px;fill:none;stroke:#1AA168;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .dgrid{display:grid;gap:10px}
+  .dgrid{flex:1;min-height:0;display:grid;gap:10px}
+  .dgrid>.card-m:first-child{display:flex;flex-direction:column}
+  .top5{display:none}
   .card-m{border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
   .card-m h5{margin:0 0 8px;font-size:12.5px;font-weight:500;display:flex;justify-content:space-between;color:var(--ink)}
   .card-m h5 span{color:var(--mute);font-weight:400}
-  .area{position:relative}
-  .area svg{display:block;width:100%;height:150px;overflow:visible}
+  .area{position:relative;flex:1;min-height:150px}
+  .area svg{display:block;width:100%;height:100%;overflow:visible}
   .area .grid line{stroke:#F0F0F1}
   .area .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
   .area .ln2{fill:none;stroke:#C4C4C8;stroke-width:1.5;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
@@ -209,7 +211,7 @@
   .donut li{display:flex;align-items:center;gap:6px}
   .donut li i{width:8px;height:8px;border-radius:2px}
   .donut li span{margin-left:auto;padding-left:8px;font-weight:500}
-  .top5{display:grid;gap:7px;margin-top:12px;font-size:11.5px}
+  .top5{gap:7px;margin-top:12px;font-size:11.5px}
   .top5 div{display:grid;grid-template-columns:1fr auto;gap:3px}
   .top5 i{grid-column:1/-1;height:4px;border-radius:4px;background:#F0F0F1;overflow:hidden}
   .top5 i::after{content:"";display:block;height:100%;width:var(--w);background:var(--ink);border-radius:4px}
@@ -233,12 +235,12 @@
   .docs strong{font-weight:500;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .docs small{color:var(--mute);font-size:10.5px}
   .docs em{font-style:normal;font-size:10.5px;color:#9A5B00}
-  .book{display:grid;gap:16px;padding:14px 16px 16px}
+  .book{flex:1;min-height:0;display:grid;gap:16px;padding:14px 16px 16px;align-content:center}
   .book h4{margin:0 0 8px;font-size:13px;font-weight:500;letter-spacing:-.02em;display:flex;justify-content:space-between}
   .book h4 span{color:var(--mute);font-weight:400}
   .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font-size:12px}
   .cal span{color:var(--mute);font-size:10.5px;padding-bottom:4px}
-  .cal button{position:relative;aspect-ratio:1.15;border:0;border-radius:8px;background:none;font-size:12px;transition:background .2s}
+  .cal button{position:relative;aspect-ratio:1.45;border:0;border-radius:8px;background:none;font-size:12px;transition:background .2s}
   .cal button:hover{background:#F4F4F5}
   .cal button.few::after{content:"";position:absolute;left:50%;bottom:3px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:#F59E0B}
   .cal button:disabled{color:#D4D4D8;cursor:default;background:none}
@@ -255,7 +257,7 @@
   .confirm.done{background:#1AA168}
 
   /* ERP mock */
-  .erp{display:grid;grid-template-columns:1fr;font-size:12px}
+  .erp{flex:1;min-height:0;display:grid;grid-template-columns:1fr;font-size:12px}
   .erp aside{display:none;padding:14px 10px;background:#FAFAFA;border-right:1px solid var(--line)}
   .erp aside .lg{display:flex;align-items:center;gap:6px;padding:0 6px 14px;font-weight:500;font-size:13px}
   .erp aside .lg i{width:20px;height:20px;border-radius:6px;background:var(--ink);display:grid;place-items:center;color:#fff;font:600 9px Inter,sans-serif;font-style:normal}
@@ -263,14 +265,24 @@
   .erp aside button:hover{background:#F0F0F1}
   .erp aside button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
   .erp aside svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-  .erp main{padding:16px;min-width:0}
+  .erp main{padding:16px;min-width:0;display:flex;flex-direction:column;gap:10px}
+  .erp .kpis{margin:0}
+  .egrid{flex:1;min-height:0;display:grid;gap:10px}
+  .stock{display:flex;flex-direction:column;gap:9px}
+  .stock h5{margin:0}
+  .stock div{display:grid;grid-template-columns:1fr auto;gap:4px;font-size:11.5px}
+  .stock div span{color:var(--mute)}
+  .stock i{grid-column:1/-1;height:4px;border-radius:4px;background:#F0F0F1;overflow:hidden}
+  .stock i::after{content:"";display:block;height:100%;width:var(--w);background:#F59E0B;border-radius:4px}
+  .stock button{margin-top:auto;padding:9px;border:0;border-radius:8px;background:var(--ink);color:#fff;font-size:12px;transition:background .2s}
+  .stock button.done{background:#1AA168}
   .erp .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
   .erp .hd h4{margin:0;font-size:16px;font-weight:500;letter-spacing:-.02em}
   .erp .hd small{color:var(--mute)}
   .erp .live{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:#ECFDF3;color:#137A4F;font-size:11px}
   .erp .live::before{content:"";width:6px;height:6px;border-radius:50%;background:#1AA168;animation:pulse 1.6s infinite}
   @keyframes pulse{50%{opacity:.3}}
-  .erp .tbl{margin-top:4px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .erp .tbl{border:1px solid var(--line);border-radius:10px;overflow:hidden}
   .erp .tbl header{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line)}
   .erp .tbl header strong{font-weight:500}
   .erp .row-o{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line)}
@@ -282,7 +294,7 @@
   .st{font:10.5px var(--mono);text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap}
   .st.ok{background:#ECFDF3;color:#137A4F}
   .st.wait{background:#FFF7E6;color:#9A5B00}
-  .erp .mra{display:flex;align-items:center;gap:10px;margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--soft);color:var(--grey)}
+  .erp .mra{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:var(--soft);color:var(--grey)}
   .erp .mra svg{flex:none}
   .erp .mra .pb{flex:1;height:6px;border-radius:9px;background:#E4E4E7;overflow:hidden;max-width:120px}
   .erp .mra .pb i{display:block;height:100%;width:80%;background:#1AA168}
@@ -377,6 +389,11 @@
     .book{grid-template-columns:1.1fr 1fr;gap:20px}
     .erp{grid-template-columns:150px 1fr}
     .phone{width:310px}
+    .win{--wh:540px}
+    .egrid{grid-template-columns:1.55fr 1fr}
+    .top5{display:grid}
+    .cal button{aspect-ratio:1.6}
+    .site .prods img{aspect-ratio:1}
     .dgrid{grid-template-columns:1.7fr 1fr}
     .site .prods{grid-template-columns:repeat(4,1fr)}
     .phone .top{height:190px}
@@ -483,12 +500,21 @@
               <div><small>Open orders</small><strong>37</strong><em>+4 today</em></div>
               <div><small>Low stock</small><strong>5 items</strong><em style="color:#9A5B00">Reorder</em></div>
             </div>
+            <div class="egrid">
             <div class="tbl">
               <header><strong>Recent orders</strong><div class="seg" id="ofilter"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="wait">Pending</button><button aria-pressed="false" data-f="ok">Dispatched</button></div></header>
               <div class="row-o" data-s="ok"><code>#2418</code><span>Curepipe Hardware</span><b>Rs 18,450</b><em class="st ok">Dispatched</em></div>
               <div class="row-o" data-s="wait"><code>#2419</code><span>Bagatelle Home Store</span><b>Rs 7,980</b><em class="st wait">Pending</em></div>
               <div class="row-o" data-s="ok"><code>#2420</code><span>Flacq Distributors</span><b>Rs 32,100</b><em class="st ok">Dispatched</em></div>
               <div class="row-o" data-s="wait"><code>#2421</code><span>Rose‑Hill Pharmacy</span><b>Rs 4,560</b><em class="st wait">Pending</em></div>
+              <div class="row-o" data-s="ok"><code>#2422</code><span>Mahébourg Marine Supplies</span><b>Rs 12,300</b><em class="st ok">Dispatched</em></div>
+            </div>
+            <div class="card-m stock"><h5>Low stock <span>5 items</span></h5>
+              <div>Rice 25kg<span>12 left</span><i style="--w:15%"></i></div>
+              <div>Cooking oil 5L<span>20 left</span><i style="--w:25%"></i></div>
+              <div>Sugar 10kg<span>8 left</span><i style="--w:10%"></i></div>
+              <button id="po">Create purchase order</button>
+            </div>
             </div>
             <div class="mra"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1AA168" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg><span>MRA e‑invoices · 12 of 15 submitted</span><span class="pb" aria-hidden="true"><i></i></span></div>
           </main>
@@ -796,6 +822,7 @@
 
   // ERP mock: sidebar + order filter
   group('.erp aside button');
+  document.getElementById('po').addEventListener('click', e => { e.target.classList.add('done'); e.target.textContent = 'PO‑1043 drafted ✓'; });
   group('#ofilter button', b => document.querySelectorAll('.row-o').forEach(r => r.hidden = b.dataset.f !== 'all' && r.dataset.s !== b.dataset.f));
 
   // Website mock: category filter, favourites, bag
